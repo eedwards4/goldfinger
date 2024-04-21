@@ -2,17 +2,33 @@
 # created by Ethan Edwards and Collins Senaya
 
 # For bots
-from MetaTrader5 import *
-import threading
-
+import subprocess as sp
+import signal
+import time
+import sys
 
 # For UI
 # TODO: FIND A PACKAGE FOR GUI (PREFERABLY HTML/JS)
 
+# IMPORT MODULES. EVERYTHING BETWEEN THIS AND THE BOTTOM COMMENT IS USER-ACCESSIBLE
+class Manager:  # TODO: MOVE MORE OF THE MODULE HERE SO LESS USER REQS
+    kill_now = False
+
+    def __init__(self):
+        if sys.platform == 'darwin' or sys.platform == 'linux':
+            signal.signal(signal.SIGINT, self.exit)
+            signal.signal(signal.SIGTERM, self.exit)
+
+    def exit(self, signum, frame):
+        self.kill_now = True
+# IMPORT MODULES. EVERYTHING ABOVE THIS IS USER-ACCESSIBLE
+
+# Internal
 commands = {"help", "new", "list", "start", "kill", "quit"}
 
 class Bot:
     def __init__(self, _name, _dir):
+        self.process = None
         self.name = _name
         self.fileDir = _dir
         self.status = "Idle"
@@ -20,13 +36,26 @@ class Bot:
     def start(self):
         self.status = "Running"
         # Thread setup/start
+        self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
 
     def kill(self):
         self.status = "Killed"
         # Proper thread shutdown here
+        if sys.platform == "win32":
+            self.process.stdin.write(b'kill\n')  # Windows
+            self.process.stdin.flush()
+        elif sys.platform == "darwin":
+            self.process.send_signal(signal.SIGTERM)  # Macos
+        else:
+            self.process.send_signal(signal.SIGTERM)  # Linux
+        try:
+            self.process.wait(10)
+        except sp.TimeoutExpired:
+            print("Unable to gracefully shut down {}, force killing...".format(self.name))
+            self.process.kill()  # Kill process if we can't shut down gracefully
 
 def main():
-    b1 = Bot("test", "/home/fake/address")
+    b1 = Bot("test", "test_bot.py")
     bots = [b1]
     # Temp cli interface
     # TODO: REPLACE WITH A GUI
@@ -34,50 +63,50 @@ def main():
     print("Type 'help' for a list of commands")
     while True:
         command = input("> ")
-        if command == "quit":
-            print("Shutting down botnet...")
-            for bot in bots:
-                bot.kill()
-            print("All bots exited successfully, exiting")
-            exit(0)
+        if command in commands:
+            if command == "help":
+                print("Available commands:")
+                for command in commands:
+                    print("\t", command)
 
-        elif command == "help":
-            print("Commands:")
-            for command in commands:
-                print(command)
+            elif command == "quit":
+                print("Quitting!")
+                print("Attempting botnet shutdown...")
+                for bot in bots:
+                    if bot.status != "Killed":
+                        print("Attempting to kill {}".format(bot.name))
+                        bot.kill()
+                print("Bot shutdown successful. Terminating manager.")
+                exit(0)
 
-        elif command == "new":
-            print("Please enter a name for the new bot:")
-            name = input("> ")
-            print("Please enter the bot file location:")
-            botDir = input("> ")
-            print("Creating {} at {}".format(name, botDir))
-            bots.append(Bot(name, botDir))
+            elif command == "list":
+                for bot in bots:
+                    print("{} ({})".format(bot.name, bot.status))
 
-        elif command == "list":
-            for bot in bots:
-                print("{} ({})".format(bot.name, bot.status))
+            elif command == "new":
+                name = input("Name: ")
+                dirname = input("Directory: ")
+                bot = Bot(name, dirname)
+                bots.append(bot)
+                print("Created {} at {}".format(bot.name, bot.fileDir))
 
-        elif command == "kill":
-            print("Which bot would you like to kill ?")
-            bot_to_kill = input("> ")
-            for bot in bots:
-                if bot_to_kill == bot.name:
-                    bot.kill()
-                    print("Bot {} killed".format(bot.name))
-                    bots.remove(bot)
+            elif command == "start":
+                name = input("Name: ")
+                for bot in bots:
+                    if bot.name == name:
+                        bot.start()
+                        print("Started {} at {}".format(bot.name, bot.fileDir))
 
-        elif command == "start":
-            print("Which bot would you like to start ?")
-            bot_to_start = input("> ")
-            for bot in bots:
-                if bot_to_start == bot.name:
-                    bot.start()
-                    print("Bot {} started".format(bot.name))
+            elif command == "kill":
+                target = input("Target: ")
+                for bot in bots:
+                    if bot.name == target:
+                        print("Attempting to kill {}".format(bot.name))
+                        bot.kill()
+                        print("{} killed successfully.".format(target))
 
         else:
-            print("Invalid command")
-            print("Type 'help' for a list of commands")
+            print("Invalid command!")
 
 
 if __name__ == "__main__":

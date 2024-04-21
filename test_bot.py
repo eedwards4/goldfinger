@@ -36,7 +36,7 @@ class MyBot(Manager):
         while not self.sigExit.acquire(blocking=False):
             self.idle_work()
 
-        self.file.write("Stopped at {}".format(datetime.datetime.now()))
+        self.file.write("\nStopped at: {}".format(datetime.datetime.now()))
         self.file.close()
         exit(0)
 

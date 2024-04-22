@@ -4,7 +4,6 @@
 # For bots
 import subprocess as sp
 import signal
-import time
 import sys
 
 # For UI

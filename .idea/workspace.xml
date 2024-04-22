@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment="Cosmetic changes to test_bot&#10;Changes:&#10;&gt; Test_bot is now an example file&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
-      <change afterPath="$PROJECT_DIR$/.idea/goldfinger.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unix_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/win32_example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/botnet_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/botnet_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_bot.py" afterDir="false" />
+    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment="Created example bots&#10;Changes:&#10;&gt; Test_bot now replaced with unix_example and win32_example&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&gt;&gt; Unix is WAY cleaner than win32, need to do something about that&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +102,7 @@
       <workItem from="1713653081252" duration="17160000" />
       <workItem from="1713720869281" duration="33000" />
       <workItem from="1713720911723" duration="12694000" />
-      <workItem from="1713794439984" duration="666000" />
+      <workItem from="1713794439984" duration="1894000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -146,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713737541438</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Created example bots&#10;Changes:&#10;&gt; Test_bot now replaced with unix_example and win32_example&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&gt;&gt; Unix is WAY cleaner than win32, need to do something about that&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
+      <option name="closed" value="true" />
+      <created>1713795226679</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713795226679</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +166,8 @@
     <MESSAGE value="Basic CLI logic&#10;Added:&#10;&gt; Basic CLI&#10;&gt; System for creating a network of bots&#10;&gt;&gt; Bots on individual threads&#10;&gt;&gt;&gt; PYTHON HAS KNOWN THREADING ISSUES, NEED TO FIND A WAY TO RESOLVE" />
     <MESSAGE value="GOT THE MANAGER WORKING&#10;Added:&#10;&gt; 14 HOURS OF WORK AND CHATGPT FIXED IT&#10;&gt;&gt; LITERALLY JUST FORGOT TO FLUSH STDIN&#10;&gt;&gt;&gt; KILLING MYSELF NOW IM NOT A REAL PROGRAMMER&#10;&#10;&gt; Bots can now be properly managed&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
     <MESSAGE value="Cosmetic changes to test_bot&#10;Changes:&#10;&gt; Test_bot is now an example file&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cosmetic changes to test_bot&#10;Changes:&#10;&gt; Test_bot is now an example file&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
+    <MESSAGE value="Created example bots&#10;Changes:&#10;&gt; Test_bot now replaced with unix_example and win32_example&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&gt;&gt; Unix is WAY cleaner than win32, need to do something about that&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created example bots&#10;Changes:&#10;&gt; Test_bot now replaced with unix_example and win32_example&#10;&gt;&gt; Showcases the basics of writing code for the manager&#10;&gt;&gt; Unix is WAY cleaner than win32, need to do something about that&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/goldfinger$botnet_manager.coverage" NAME="botnet_manager Coverage Results" MODIFIED="1713737609312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

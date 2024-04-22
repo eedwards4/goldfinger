@@ -38,24 +38,30 @@ class Bot:
         self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
 
     def kill(self):
-        self.status = "Killed"
         # Proper thread shutdown here
-        if sys.platform == "win32":
-            self.process.stdin.write(b'kill\n')  # Windows
-            self.process.stdin.flush()
-        elif sys.platform == "darwin":
-            self.process.send_signal(signal.SIGTERM)  # Macos
-        else:
-            self.process.send_signal(signal.SIGTERM)  # Linux
-        try:
-            self.process.wait(10)
-        except sp.TimeoutExpired:
-            print("Unable to gracefully shut down {}, force killing...".format(self.name))
-            self.process.kill()  # Kill process if we can't shut down gracefully
+        if self.status == "Running":
+            self.status = "Killed"
+            if sys.platform == "win32":
+                self.process.stdin.write(b'kill\n')  # Windows
+                self.process.stdin.flush()
+            elif sys.platform == "darwin":
+                self.process.send_signal(signal.SIGTERM)  # Macos
+            else:
+                self.process.send_signal(signal.SIGTERM)  # Linux
+            try:
+                self.process.wait(10)
+            except sp.TimeoutExpired:
+                print("Unable to gracefully shut down {}, force killing...".format(self.name))
+                self.process.kill()  # Kill process if we can't shut down gracefully
 
 def main():
-    b1 = Bot("test", "test_bot.py")
-    bots = [b1]
+    ADDEXAMPLES = True
+    if ADDEXAMPLES:
+        if sys.platform == "win32":
+            b1 = Bot("Example", "./Examples/win32_example.py")
+        else:
+            b1 = Bot("Example", "./Examples/unix_example.py")
+        bots = [b1]
     # Temp cli interface
     # TODO: REPLACE WITH A GUI
     print("Welcome to the Goldfinger Bot Manager!")

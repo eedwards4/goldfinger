@@ -43,5 +43,6 @@ class MyBot(Manager):
         self.file.close()
         exit(0)
 
+
 if __name__ == '__main__':
     bot = MyBot()

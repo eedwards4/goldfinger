@@ -2,7 +2,7 @@
 Created by Ethan Edwards and Collins Senaya
 
 >>
-A bot management system
+A bot management system. Designed for Forex trading bots but can be used with pretty much any bot/process you want to manage!
 
 <h2>INSTRUCTIONS</h2>
 <h3>Manager commands</h3>

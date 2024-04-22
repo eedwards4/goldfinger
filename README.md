@@ -15,6 +15,16 @@ A bot management system. Designed for Forex trading bots but can be used with pr
   <li>quit  : Kills all running processes and quits the program</li>
 </ul>
 
+<h3>Program arguments</h3>
+<ul>
+  <li>--examples or -e : Starts the program with a preloaded example bot</li>
+  <li>--headless or -h : Starts the program in headless mode 
+    <ul>
+      <li><b>THE PROGRAM DOES NOT HAVE A GUI YET. DO NOT ATTEMPT TO START WITHOUT -h!!</b></li>
+    </ul>
+  </li>
+</ul>
+
 <h3>Client code</h3>
 System dependant, see relevant example file
 

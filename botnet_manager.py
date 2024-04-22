@@ -23,7 +23,7 @@ class Manager:  # TODO: MOVE MORE OF THE MODULE HERE SO LESS USER REQS
 # IMPORT MODULES. EVERYTHING ABOVE THIS IS USER-ACCESSIBLE
 
 # Internal
-commands = {"help", "new", "list", "start", "kill", "quit"}
+COMMANDS = {"help", "new", "list", "start", "kill", "quit"}
 
 class Bot:
     def __init__(self, _name, _dir):
@@ -40,7 +40,6 @@ class Bot:
     def kill(self):
         # Proper thread shutdown here
         if self.status == "Running":
-            self.status = "Killed"
             if sys.platform == "win32":
                 self.process.stdin.write(b'kill\n')  # Windows
                 self.process.stdin.flush()
@@ -53,25 +52,17 @@ class Bot:
             except sp.TimeoutExpired:
                 print("Unable to gracefully shut down {}, force killing...".format(self.name))
                 self.process.kill()  # Kill process if we can't shut down gracefully
+            self.status = "Killed"
 
-def main():
-    ADDEXAMPLES = True
-    if ADDEXAMPLES:
-        if sys.platform == "win32":
-            b1 = Bot("Example", "./Examples/win32_example.py")
-        else:
-            b1 = Bot("Example", "./Examples/unix_example.py")
-        bots = [b1]
-    # Temp cli interface
-    # TODO: REPLACE WITH A GUI
+def headless(bots):
     print("Welcome to the Goldfinger Bot Manager!")
     print("Type 'help' for a list of commands")
     while True:
         command = input("> ")
-        if command in commands:
+        if command in COMMANDS:
             if command == "help":
                 print("Available commands:")
-                for command in commands:
+                for command in COMMANDS:
                     print("\t", command)
 
             elif command == "quit":
@@ -112,6 +103,30 @@ def main():
 
         else:
             print("Invalid command!")
+
+def main():
+    ADDEXAMPLES = False
+    HEADLESS = False
+    # Parse arguments
+    if len(sys.argv) > 1:
+        for arg in sys.argv:
+            if arg == "--examples" or arg == "-e":
+                ADDEXAMPLES = True
+            if arg == "--headless" or arg == "-h":
+                HEADLESS = True
+    if ADDEXAMPLES:
+        if sys.platform == "win32":
+            b1 = Bot("Example", "./Examples/win32_example.py")
+        else:
+            b1 = Bot("Example", "./Examples/unix_example.py")
+        bots = [b1]
+    # CLI interface
+    if HEADLESS:
+        headless(bots)
+    # GUI interface
+    else:
+        pass  # TODO: GUI INTERFACE
+
 
 
 if __name__ == "__main__":

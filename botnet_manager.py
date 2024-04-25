@@ -9,6 +9,9 @@ import sys
 # For UI
 # TODO: FIND A PACKAGE FOR GUI (PREFERABLY HTML/JS)
 
+# Globals
+HEADLESS = False
+
 # IMPORT MODULES. EVERYTHING BETWEEN THIS AND THE BOTTOM COMMENT IS USER-ACCESSIBLE
 class Manager:  # TODO: MOVE MORE OF THE MODULE HERE SO LESS USER REQS
     kill_now = False
@@ -35,7 +38,14 @@ class Bot:
     def start(self):
         self.status = "Running"
         # Thread setup/start
-        self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
+        try:
+            self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
+        except exception as e:
+            if HEADLESS:
+                print("Error starting bot: {}".format(e))
+            self.status = "Error"
+            return
+
 
     def kill(self):
         # Proper thread shutdown here
@@ -50,7 +60,8 @@ class Bot:
             try:
                 self.process.wait(10)
             except sp.TimeoutExpired:
-                print("Unable to gracefully shut down {}, force killing...".format(self.name))
+                if HEADLESS:
+                    print("Unable to gracefully shut down {}, force killing...".format(self.name))
                 self.process.kill()  # Kill process if we can't shut down gracefully
             self.status = "Killed"
 
@@ -106,7 +117,6 @@ def headless(bots):
 
 def main():
     ADDEXAMPLES = False
-    HEADLESS = False
     # Parse arguments
     if len(sys.argv) > 1:
         for arg in sys.argv:

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment="Added program arguments and branching paths&#10;Changes:&#10;&gt; Added control path split for GUI VS CLI&#10;&gt; Added arguments for:&#10;&gt;&gt; Automatically making an example bot&#10;&gt;&gt; GUI VS CLI split&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
+    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment=".idea update&#10;Changes:&#10;&gt; Yeah&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
       <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/goldfinger.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/goldfinger.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/botnet_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/botnet_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="e_botTest" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="prod" />
+      </list>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/botnet_manager.py" root0="SKIP_INSPECTION" />
@@ -84,6 +96,7 @@
       <list>
         <item itemvalue="Python.botnet_manager" />
         <item itemvalue="Python.botnet_manager" />
+        <item itemvalue="Python.botnet_manager" />
       </list>
     </recent_temporary>
   </component>
@@ -112,6 +125,7 @@
       <workItem from="1713794439984" duration="1894000" />
       <workItem from="1713805883006" duration="558000" />
       <workItem from="1713806598005" duration="2854000" />
+      <workItem from="1714078232115" duration="1168000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -197,6 +211,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added program arguments and branching paths&#10;Changes:&#10;&gt; Added control path split for GUI VS CLI&#10;&gt; Added arguments for:&#10;&gt;&gt; Automatically making an example bot&#10;&gt;&gt; GUI VS CLI split&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/goldfinger$botnet_manager.coverage" NAME="botnet_manager Coverage Results" MODIFIED="1713809066396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/goldfinger$botnet_manager.coverage" NAME="botnet_manager Coverage Results" MODIFIED="1713812291953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

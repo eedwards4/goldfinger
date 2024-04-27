@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment=".idea update&#10;Changes:&#10;&gt; Yeah&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+    <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment="Created example folder&#10;Changes:&#10;&gt; I forgot earlier lol&#10;&#10;TODO:&#10;&gt; Move more of the user-side control logic to the imported class&#10;&gt;&gt; Less likely to be user-side issues&#10;&gt;&gt; Cleaner user-side code&#10;&#10;&gt; Get a GUI working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/botnet_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/botnet_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +48,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.botnet_manager.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/evane/PycharmProjects/personal/goldfinger&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.botnet_manager.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/evane/PycharmProjects/personal/goldfinger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\evane\PycharmProjects\personal\goldfinger" />
@@ -126,6 +127,7 @@
       <workItem from="1713805883006" duration="558000" />
       <workItem from="1713806598005" duration="2854000" />
       <workItem from="1714078232115" duration="1168000" />
+      <workItem from="1714200454414" duration="2643000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />

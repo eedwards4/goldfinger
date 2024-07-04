@@ -94,7 +94,7 @@ class eBot(Manager):
         if authorized:
             print("Connected to account: ", account)
         else:
-            print("Failed to connect at account: ", account)
+            print("Failed to connect to account: ", account)
             mt5.shutdown()
             exit(2)
 

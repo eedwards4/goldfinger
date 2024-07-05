@@ -9,6 +9,10 @@ import sys
 # For UI
 # TODO: FIND A PACKAGE FOR GUI (PREFERABLY HTML/JS)
 
+# Globals
+HEADLESS = False
+bots = []
+
 # IMPORT MODULES. EVERYTHING BETWEEN THIS AND THE BOTTOM COMMENT IS USER-ACCESSIBLE
 class Manager:  # TODO: MOVE MORE OF THE MODULE HERE SO LESS USER REQS
     kill_now = False
@@ -35,7 +39,14 @@ class Bot:
     def start(self):
         self.status = "Running"
         # Thread setup/start
-        self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
+        try:
+            self.process = sp.Popen([sys.executable, self.fileDir], stdin=sp.PIPE)
+        except exception as e:
+            if HEADLESS:
+                print("Error starting bot: {}".format(e))
+            self.status = "Error"
+            return
+
 
     def kill(self):
         # Proper thread shutdown here
@@ -50,83 +61,124 @@ class Bot:
             try:
                 self.process.wait(10)
             except sp.TimeoutExpired:
-                print("Unable to gracefully shut down {}, force killing...".format(self.name))
+                if HEADLESS:
+                    print("Unable to gracefully shut down {}, force killing...".format(self.name))
                 self.process.kill()  # Kill process if we can't shut down gracefully
             self.status = "Killed"
 
-def headless(bots):
+class commands:
+    def help(self):
+        if HEADLESS:
+            print("Available commands:")
+            for command in COMMANDS:
+                print("\t", command)
+        else:
+            pass
+
+    def quit(self):
+        if HEADLESS:
+            print("Quitting!")
+            print("Attempting botnet shutdown...")
+
+        for bot in bots:
+            if bot.status != "Killed":
+                bot.kill()
+
+        if HEADLESS:
+            print("Bot shutdown successful. Terminating manager.")
+
+        exit(0)
+
+    def list(self):
+        if HEADLESS:
+            for bot in bots:
+                print("{} ({})".format(bot.name, bot.status))
+        else:
+            pass
+
+    def new(self):
+        if HEADLESS:
+            name = input("Name: ")
+            dirname = input("Directory: ")
+            bot = Bot(name, dirname)
+            global bots
+            bots.append(bot)
+            print("Created {} at {}".format(bot.name, bot.fileDir))
+        else:
+            pass
+
+    def start(self):
+        if HEADLESS:
+            name = input("Name: ")
+            for bot in bots:
+                if bot.name == name:
+                    bot.start()
+                    print("Started {} at {}".format(bot.name, bot.fileDir))
+
+    def kill(self):
+        if HEADLESS:
+            target = input("Target: ")
+            for bot in bots:
+                if bot.name == target:
+                    print("Attempting to kill {}".format(bot.name))
+                    bot.kill()
+                    print("{} killed successfully.".format(target))
+        else:
+            pass
+
+
+def headless(bots, c):
     print("Welcome to the Goldfinger Bot Manager!")
     print("Type 'help' for a list of commands")
     while True:
         command = input("> ")
         if command in COMMANDS:
             if command == "help":
-                print("Available commands:")
-                for command in COMMANDS:
-                    print("\t", command)
+                c.help()
 
             elif command == "quit":
-                print("Quitting!")
-                print("Attempting botnet shutdown...")
-                for bot in bots:
-                    if bot.status != "Killed":
-                        print("Attempting to kill {}".format(bot.name))
-                        bot.kill()
-                print("Bot shutdown successful. Terminating manager.")
-                exit(0)
+                c.quit()
 
             elif command == "list":
-                for bot in bots:
-                    print("{} ({})".format(bot.name, bot.status))
+                c.list()
 
             elif command == "new":
-                name = input("Name: ")
-                dirname = input("Directory: ")
-                bot = Bot(name, dirname)
-                bots.append(bot)
-                print("Created {} at {}".format(bot.name, bot.fileDir))
+                c.new()
 
             elif command == "start":
-                name = input("Name: ")
-                for bot in bots:
-                    if bot.name == name:
-                        bot.start()
-                        print("Started {} at {}".format(bot.name, bot.fileDir))
+                c.start()
 
             elif command == "kill":
-                target = input("Target: ")
-                for bot in bots:
-                    if bot.name == target:
-                        print("Attempting to kill {}".format(bot.name))
-                        bot.kill()
-                        print("{} killed successfully.".format(target))
+                c.kill()
 
         else:
             print("Invalid command!")
 
 def main():
     ADDEXAMPLES = False
-    HEADLESS = False
+    # Create a commands instance
+    c = commands()
     # Parse arguments
     if len(sys.argv) > 1:
         for arg in sys.argv:
             if arg == "--examples" or arg == "-e":
                 ADDEXAMPLES = True
             if arg == "--headless" or arg == "-h":
+                global HEADLESS
                 HEADLESS = True
     if ADDEXAMPLES:
         if sys.platform == "win32":
             b1 = Bot("Example", "./Examples/win32_example.py")
         else:
             b1 = Bot("Example", "./Examples/unix_example.py")
+        global bots
         bots = [b1]
     # CLI interface
     if HEADLESS:
-        headless(bots)
+        headless(bots, c)
     # GUI interface
     else:
         pass  # TODO: GUI INTERFACE
-
 
 
 if __name__ == "__main__":

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="462e4e5b-fb37-41eb-ad87-90549bd343cb" name="Changes" comment="Started working on bot&#10;Changes:&#10;&gt; Bunch of stuff&#10;&gt; Not sure how most of this works lmao&#10;&#10;TODO:&#10;&gt; Working bot?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/botnet_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/botnet_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebot.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
